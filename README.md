@@ -90,11 +90,16 @@ var data = [{
 	values: [{x: 'SomethingA', y: 10}, {x: 'SomethingB', y: 4}, {x: 'SomethingC', y: 3}]
 }];
 
+var handleClick = function(e,data) {
+	console.log(data);
+}
+
 React.render(
 	<BarChart
 		data={data}
 		width={400}
 		height={400}
+		onClick={handleClick}
 		margin={{top: 10, bottom: 50, left: 50, right: 10}}/>,
 	document.getElementById('location')
 );

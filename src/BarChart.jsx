@@ -13,6 +13,7 @@ let StackAccessorMixin = require('./StackAccessorMixin');
 let StackDataMixin = require('./StackDataMixin');
 let DefaultScalesMixin = require('./DefaultScalesMixin');
 let TooltipMixin = require('./TooltipMixin');
+let EventsMixin = require('./EventsMixin');
 
 let DataSet = React.createClass({
 	propTypes: {
@@ -24,7 +25,8 @@ let DataSet = React.createClass({
 		label: React.PropTypes.func.isRequired,
 		x: React.PropTypes.func.isRequired,
 		y: React.PropTypes.func.isRequired,
-		y0: React.PropTypes.func.isRequired
+    y0: React.PropTypes.func.isRequired,
+    onClick: React.PropTypes.func
 	},
 
 	render() {
@@ -53,6 +55,7 @@ let DataSet = React.createClass({
 					data={e}
 					onMouseEnter={onMouseEnter}
 					onMouseLeave={onMouseLeave}
+					onClick={this.props.onClick}
 						/>
 				);
 			});
@@ -71,7 +74,8 @@ let BarChart = React.createClass({
 			 StackAccessorMixin,
 			 StackDataMixin,
 			 DefaultScalesMixin,
-			 TooltipMixin],
+			 TooltipMixin,
+			 EventsMixin],
 
 	getDefaultProps() {
 		return {};
@@ -119,6 +123,7 @@ let BarChart = React.createClass({
 			x={x}
 			onMouseEnter={this.onMouseEnter}
 			onMouseLeave={this.onMouseLeave}
+			onClick={this.props.onClick}
 				/>
 
 				<Axis
