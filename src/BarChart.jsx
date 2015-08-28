@@ -143,6 +143,7 @@ let BarChart = React.createClass({
 			width={innerWidth}
 			{...yAxis}
 				/>
+				{ this.props.children }
 				</Chart>
 
 				<Tooltip
